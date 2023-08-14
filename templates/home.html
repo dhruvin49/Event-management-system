@@ -1,0 +1,63 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+    <div class="section" id="home__hero">
+        <div id="hero__content">
+            <h3 id="intro--headline">"Discover, register, and attend your favorite events hassle-free."</h3>
+
+            <p id="intro--subheadline">CodeBattles is a website where anyone can compete in beginner friendly coding & designing challenges and win prizes! Learn and collaborate with other devs to level up your skills.</p>
+        </div>
+    </div>
+
+
+    <div>
+        <div>
+            <h3>Events</h3>
+        </div>
+        
+        <div class="events--lists section">
+            {% for event in evnt %}
+
+                    
+                    <div class="event__wrapper">
+                        <h5 class="event__preview--title">{{event.name}}</h5>
+
+                        <div class="event__preview__details">
+
+                            <p>{{event.total_count}} Participants</p>
+                        </div>
+
+
+                        <div class="event__preview__details__bottom">
+                            <div>
+                                <p>Start Date:</p>
+                                <p class="event--date">{{event.datetime_from|date:"d.m.Y"}}</p>
+                            </div>
+
+                            <div>
+                                <p>End Date:</p>
+                                <p class="event--date">{{event.datetime_to|date:"m-d-Y"}}</p>
+                            </div>
+
+                            
+                        </div>
+                        <form id="moredetails" method="POST" action="{% url 'eventdetails' %}">     
+                            <!-- eventdetails is url name  -->
+                            {% csrf_token %}
+                            <input type="hidden" name="eventdetails" value="{{ event.event_id }}">   
+                            <!-- name = 'eventdetails is request.POST.get('eventdetails')' -->
+                            <!-- event is for loop object and event_id is primary key -->
+                            <button type="submit">More Details</button>
+                        </form> 
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'admin/change_form.html' %}
+{%load static%}
+
+
+{% block submit_buttons_bottom %}
+{{ block.super }}
+
+
+
+<script>
+  
+  let subLocation = document.querySelector("#sub_event_set-group")
+  let hassub = document.querySelector("#id_has_sabevent");
+  let hasTicket = document.querySelector("#id_has_tickets")
+  let ticketCount = document.querySelector(".field-total_count")
+
+  let eventForm = document.querySelector("#event_form")
+
+
+
+  ticketCount.style.display = "none"
+
+  hasTicket.addEventListener("click",function(){
+    if (hasTicket.checked){
+      ticketCount.style.display = "block"
+    }
+    else{
+      ticketCount.style.display = "none"
+    }
+  })
+  
+
+subLocation.style.display = "none"
+hassub.addEventListener('click', function(){
+  if(hassub.checked){
+    subLocation.style.display = "block"
+  }else{
+    subLocation.style.display = "none"
+  }
+})
+
+
+</script>
+
+{% endblock %}
