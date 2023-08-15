@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-t2=eqcc9h(xp@j+40*8tuo_%uxoemhmb&*qw@rn^!6z31rxo6!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app' , '.now.sh']
 
 
 # Application definition
@@ -152,10 +152,8 @@ EMAIL_HOST_USER = 'dhruvinkalathiya96@gmail.com' # Replace with your actual Gmai
 EMAIL_HOST_PASSWORD = 'fkwphfxphlabcbkt' # Replace with your actual Gmail password or an app password
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-
-django_heroku.settings(locals())
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 
 
