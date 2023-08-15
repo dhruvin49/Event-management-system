@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import configparser
+import django_heroku
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -149,11 +151,12 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'dhruvinkalathiya96@gmail.com' # Replace with your actual Gmail address
 EMAIL_HOST_PASSWORD = 'fkwphfxphlabcbkt' # Replace with your actual Gmail password or an app password
 
-PAYU_CONFIG = {
-    'merchant_key': '<your-merchant-key>',
-    'merchant_id': '<your-merchant-id>',
-    'mode': 'test', # use 'live' for live transactions
-}
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+django_heroku.settings(locals())
+
 
 
 
